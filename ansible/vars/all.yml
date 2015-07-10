@@ -1,0 +1,5 @@
+---
+server:
+    packages: [vim, git, htop, nfs-kernel-server, nfs-common]
+    timezone: Europe/Amsterdam
+    locale: en_US.UTF-8
