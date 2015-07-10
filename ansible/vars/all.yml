@@ -4,3 +4,6 @@ server:
     timezone: Europe/Amsterdam
     locale: en_US.UTF-8
     download_user: downloader
+sickrage:
+    home: "/home/{{server.download_user}}/.sickrage"
+    user: "{{server.download_user}}"
