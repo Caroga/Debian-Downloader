@@ -5,3 +5,4 @@
     - vars/all.yml
   roles:
     - server
+    - sickrage

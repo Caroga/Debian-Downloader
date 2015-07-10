@@ -1,31 +1,16 @@
 ---
-- name: Update apt
-  sudo: yes
-  apt: update_cache=yes
-
-- name: Install System Packages
+- name: Install Required Packages
   sudo: yes
   apt: pkg={{ item }} state=latest
   with_items:
-    - curl
-    - wget
-    - python-software-properties
+    - git-core
+    - python
+    - python-cheetah
 
-- name: Install Extra Packages
+- name: SickRage Git Repository Checkout
   sudo: yes
-  apt: pkg={{ item }} state=latest
-  with_items: server.packages
-  when: server.packages is defined
+  git: repo=https://github.com/SiCKRAGETV/SickRage.git dest=/home/{{ server.download_user }}/.sickrage
 
-- name: Configure the timezone
+- name: Change SickRage ownership
   sudo: yes
-  template: src=timezone.tpl dest=/etc/timezone
-
-- name: More Configure the timezone
-  sudo: yes
-  file: src=/usr/share/zoneinfo/{{server.timezone}} dest=/etc/localtime state=link force=yes backup=yes
-
-- name: Set default system language pack
-  shell: locale-gen {{server.locale}}
-  sudo: yes
-
+  file: path=/home/{{ server.download_user }}/.sickrage owner={{ server.download_user }} group={{ server.download_user }}

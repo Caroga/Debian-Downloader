@@ -29,3 +29,6 @@
   shell: locale-gen {{server.locale}}
   sudo: yes
 
+- name: Add Download User
+  user: name={{ server.download_user }}
+
