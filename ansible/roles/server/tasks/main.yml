@@ -30,5 +30,5 @@
   sudo: yes
 
 - name: Add Download User
-  user: name={{server.download_user}}
+  user: name={{server.download_user}} shell=/bin/bash
 
