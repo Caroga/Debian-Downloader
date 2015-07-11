@@ -6,3 +6,4 @@
   roles:
     - server
     - sickrage
+    - couchpotato

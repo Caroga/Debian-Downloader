@@ -7,3 +7,6 @@ server:
 sickrage:
     home: "/home/{{server.download_user}}/.sickrage"
     user: "{{server.download_user}}"
+couchpotato:
+    home: "/home/{{server.download_user}}/.couchpotato"
+    user: "{{server.download_user}}"

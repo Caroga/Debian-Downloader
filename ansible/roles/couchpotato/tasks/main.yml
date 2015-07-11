@@ -1,0 +1,37 @@
+---
+- name: Install Required Packages
+  sudo: yes
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - git-core
+    - python
+
+- name: CouchPotato Git Repository Checkout
+  sudo: yes
+  git: repo=git://github.com/RuudBurger/CouchPotatoServer.git dest=/home/{{server.download_user}}/.couchpotato accept_hostkey=yes
+
+- name: Add Runscripts For CouchPotato
+  sudo: yes
+  command: cp /home/{{server.download_user}}/.couchpotato/init/ubuntu /etc/init.d/couchpotato
+
+- name: Add Execute Permissions To Runscript
+  sudo: yes
+  file: path=/etc/init.d/couchpotato state=file mode="u+rwx"
+
+- name: Create Default Settings
+  sudo: yes
+  template: src=default.settings.couchpotato.tpl dest=/etc/default/couchpotato
+
+- name: Add Execute Permissions To Default Settings
+  sudo: yes
+  file: path=/etc/default/couchpotato state=file mode="u+rw"
+
+- name: Update Boot Sequence To Recognize couchpotato
+  sudo: yes
+  command: update-rc.d couchpotato defaults
+  notify:
+      - restart couchpotato
+
+- name: Change couchpotato ownership
+  sudo: yes
+  file: path=/home/{{server.download_user}}/.couchpotato owner={{server.download_user}} group={{server.download_user}} recurse=yes
