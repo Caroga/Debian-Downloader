@@ -10,3 +10,12 @@ sickrage:
 couchpotato:
     home: "/home/{{server.download_user}}/.couchpotato"
     user: "{{server.download_user}}"
+deluged:
+    user: "{{server.download_user}}"
+    group: "{{server.download_user}}"
+    run_at_startup: "YES"
+    logfile_location: "/var/log/deluge-daemon.log"
+delugewebui:
+    user: "{{server.download_user}}"
+    group: "{{server.download_user}}"
+    logfile_location: "/var/log/deluge-web.log"

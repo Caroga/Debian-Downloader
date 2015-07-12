@@ -1,0 +1,49 @@
+---
+- name: Create Deluged Log File
+  sudo: yes
+  file: path={{deluged.logfile_location}} state=touch
+
+- name: Create Deluge-WebUI Log File
+  sudo: yes
+  file: path={{delugewebui.logfile_location}} state=touch
+
+- name: Change Deluged Logfile Ownership
+  sudo: yes
+  file: path={{deluged.logfile_location}} owner={{deluged.user}} group={{deluged.group}}
+
+- name: Change Deluge-WebUI Logfile Ownership
+  sudo: yes
+  file: path={{delugewebui.logfile_location}} owner={{delugewebui.user}} group={{delugewebui.group}}
+
+- name: Add Required Repository
+  sudo: yes
+  apt_repository: repo='deb http://ppa.launchpad.net/deluge-team/ppa/ubuntu precise main' state=present
+
+- name: Update apt
+  sudo: yes
+  apt: update_cache=yes
+
+- name: Install Deluge Deamon and Web Interface
+  sudo: yes
+  apt: pkg={{ item }} state=latest install_recommends=yes force=yes
+  with_items:
+    - deluged
+    - deluge-webui
+
+- name: Add Default Settingss For Deluged
+  sudo: yes
+  template: src=default.settings.deluged.tpl dest=/etc/default/deluge-daemon
+
+- name: Add Runscript For Deluged
+  sudo: yes
+  template: src=initscript.deluged.tpl dest=/etc/init.d/deluge-daemon
+
+- name: Add Execute Permissions To Deluge Runscript
+  sudo: yes
+  file: path=/etc/init.d/deluge-daemon state=file mode="u+rwx"
+
+- name: Update Boot Sequence To Recognize Deluge Daemon and WebUI
+  sudo: yes
+  command: update-rc.d deluge-daemon defaults
+  notify:
+      - start deluge
