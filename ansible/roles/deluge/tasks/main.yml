@@ -42,6 +42,10 @@
   sudo: yes
   file: path=/etc/init.d/deluge-daemon state=file mode="u+rwx"
 
+- name: Add Deluge To Logrotation
+  sudo: yes
+  template: src=logrotation.deluged.tpl dest=/etc/logrotate.d/deluge
+
 - name: Update Boot Sequence To Recognize Deluge Daemon and WebUI
   sudo: yes
   command: update-rc.d deluge-daemon defaults
