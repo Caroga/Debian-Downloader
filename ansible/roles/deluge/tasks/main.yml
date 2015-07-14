@@ -40,7 +40,7 @@
 
 - name: Add Execute Permissions To Deluge Runscript
   sudo: yes
-  file: path=/etc/init.d/deluge-daemon state=file mode="u+rwx"
+  file: path=/etc/init.d/deluge-daemon state=file mode="755"
 
 - name: Add Deluge To Logrotation
   sudo: yes

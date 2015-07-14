@@ -21,7 +21,7 @@
 
 - name: Add Execute Permissions To Runscript
   sudo: yes
-  file: path=/etc/init.d/sickrage state=file mode="u+rwx"
+  file: path=/etc/init.d/sickrage state=file mode="755"
 
 - name: Create Default Settings
   sudo: yes
@@ -29,7 +29,7 @@
 
 - name: Add Execute Permissions To Default Settings
   sudo: yes
-  file: path=/etc/default/sickrage state=file mode="u+rw"
+  file: path=/etc/default/sickrage state=file mode="755"
 
 - name: Update Boot Sequence To Recognize SickRage
   sudo: yes
