@@ -25,6 +25,14 @@
   sudo: yes
   file: src=/usr/share/zoneinfo/{{server.timezone}} dest=/etc/localtime state=link force=yes backup=yes
 
+- name: Install a better .bashrc for root
+  sudo: yes
+  template: src=bashrc.tpl dest=/root/.bashrc force=yes backup=yes
+
+- name: Install a better .bashrc for vagrant
+  sudo: yes
+  template: src=bashrc.tpl dest=/home/vagrant/.bashrc force=yes backup=yes
+
 - name: Set default system language pack
   shell: locale-gen {{server.locale}}
   sudo: yes
