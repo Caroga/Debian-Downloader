@@ -4,9 +4,9 @@ Well, it's not a repository that makes it easy to download Debian, but more some
 
 Using Ansible, this set of roles will install the following software:
 
- - SickRage (fork from SickBeard)
- - CouchPotato
- - Deluge
+ - [SickRage](https://github.com/SiCKRAGETV/SickRage) (fork from [SickBeard](http://sickbeard.com/))
+ - [CouchPotato](https://couchpota.to/)
+ - [Deluge](http://deluge-torrent.org/)
 
 Future additions
 ----------------
