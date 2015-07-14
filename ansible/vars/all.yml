@@ -19,3 +19,6 @@ delugewebui:
     user: "{{server.download_user}}"
     group: "{{server.download_user}}"
     logfile_location: "/var/log/deluge-web.log"
+nzbget:
+  user: "{{server.download_user}}"
+  download_dir: "/home/{{server.download_user}}/downloads"
