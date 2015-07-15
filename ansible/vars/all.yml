@@ -22,3 +22,7 @@ delugewebui:
 nzbget:
   user: "{{server.download_user}}"
   download_dir: "/home/{{server.download_user}}/downloads"
+headphones:
+  home: "/home/{{server.download_user}}/.headphones"
+  user: "{{server.download_user}}"
+  group: "{{server.download_user}}"

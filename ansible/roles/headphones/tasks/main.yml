@@ -1,0 +1,44 @@
+---
+
+
+- name: HeadPhones Git Repository Checkout
+  sudo: yes
+  git: repo=https://github.com/rembo10/headphones.git dest=/home/{{server.download_user}}/.headphones
+
+- name: Add Runscripts For HeadPhones
+  sudo: yes
+  command: cp /home/{{server.download_user}}/.headphones/init-scripts/init.ubuntu /etc/init.d/headphones
+
+- name: Add Execute Permissions To Runscript
+  sudo: yes
+  file: path=/etc/init.d/headphones state=file mode="755"
+
+- name: Create Default Settings
+  sudo: yes
+  template: src=default.settings.headphones.tpl dest=/etc/default/headphones
+
+- name: Add Execute Permissions To Default Settings
+  sudo: yes
+  file: path=/etc/default/headphones state=file mode="755"
+
+- name: Update Boot Sequence To Recognize HeadPhones
+  sudo: yes
+  command: update-rc.d headphones defaults
+  
+- name: Start HeadPhones To Create A Initial Config File
+  sudo: yes
+  command: service headphones start
+
+- name: Stop HeadPhones To Edit The Config File
+  sudo: yes
+  command: service headphones stop
+
+- name: Configure HeadPhones Host setting
+  sudo: yes
+  replace: dest={{headphones.home}}/config.ini regexp='http_host = localhost' replace='http_host = 0.0.0.0' backup=yes
+  notify:
+      - restart headphones
+
+- name: Change HeadPhones ownership
+  sudo: yes
+  file: path=/home/{{server.download_user}}/.headphones owner={{server.download_user}} group={{server.download_user}} recurse=yes
