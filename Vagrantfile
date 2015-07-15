@@ -36,5 +36,5 @@ Vagrant.configure("2") do |config|
         config.vm.provision :shell, path: "ansible/windows.sh", args: ["debian-downloader"]
     end
 
-    //config.vm.synced_folder "./", "/vagrant", type: "nfs"
+    #config.vm.synced_folder "./", "/vagrant", type: "nfs"
 end
