@@ -7,14 +7,16 @@ Using Ansible, this set of roles will install the following software:
  - [SickRage](https://github.com/SiCKRAGETV/SickRage) (fork from [SickBeard](http://sickbeard.com/))
  - [CouchPotato](https://couchpota.to/)
  - [Deluge](http://deluge-torrent.org/)
+ - [NZBget](http://nzbget.net/)
+ - [Headphones](https://github.com/rembo10/headphones)
 
 Future additions
 ----------------
 I am planning to add the following software/configurations:
 
  - Nginx, to enable a reverse proxy to resolve something like "http://downloader.vm/couchpotato"
- - SABnzbd or NZBGet, usenet downloader
- - HeadPhones, Automatic music downloader for SABnzbd
+ - ~~SABnzbd or NZBGet, usenet downloader~~
+ - ~~HeadPhones, Automatic music downloader for SABnzbd~~
  - HTPC-Manager, as I like to actually have 1 interface to rule them all!
  - Tie them all together, sharing a preselected media location to create a NFS share and automatically add it into CouchPotato and SickRage if possible.
  - Kick back, and watch stuff happen.
@@ -34,6 +36,15 @@ First check out the project as this is not a complete turnkey solution *yet*. So
 If you want to kick this into your Debian server then firing ansible with the correct user towards your Debian environment should be enough.
 Make sure that you use a user with (sudo) root rights. 
 
+Accessing the applications
+--------------------------
+If you did a `vagrant up` with this project's Vagrantfile, you can just press one of the below links to access the application. Otherwise, just browse towards the ip address where you have deployed the applications and add one of ports below.
+
+ - [SickRage](http://192.168.31.100:8081) OR http://-machineip-:8081
+ - [CouchPotato](http://192.168.31.100:5050) OR http://-machineip-:5050
+ - [Deluge](http://192.168.31.100:8112) OR http://-machineip-:8112
+ - [NZBget](http://192.168.31.100:6789) OR http://-machineip-:6789
+ - [Headphones](http://192.168.31.100:8181) OR http://-machineip-:8181
 
 Known issues
 -------
