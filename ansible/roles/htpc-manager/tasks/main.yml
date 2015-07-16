@@ -9,6 +9,7 @@
     - python-setuptools
     - python-pip
     - python-cherrypy
+    - python-psutil
     - vnstat
     - libjpeg-dev
     - libpng-dev
