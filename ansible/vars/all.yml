@@ -26,3 +26,7 @@ headphones:
   home: "/home/{{server.download_user}}/.headphones"
   user: "{{server.download_user}}"
   group: "{{server.download_user}}"
+htpcmanager:
+  home: "/home/{{server.download_user}}/.htpc-manager"
+  user: "{{server.download_user}}"
+  group: "{{server.download_user}}"

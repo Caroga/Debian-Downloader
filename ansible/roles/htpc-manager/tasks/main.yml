@@ -1,0 +1,61 @@
+---
+- name: Install Required Packages
+  sudo: yes
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - psutils
+    - python-imaging
+    - python-dev
+    - python-setuptools
+    - python-pip
+    - python-cherrypy
+    - vnstat
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+
+- name: Remove Faulty Python OpenSSL Library
+  sudo: yes
+  shell: sudo pip install pip -U
+
+
+- name: Remove Faulty Python OpenSSL Library
+  sudo: yes
+  shell: sudo pip uninstall pyopenssl -y
+
+
+- name: HTPC-Manager Git Repository Checkout
+  sudo: yes
+  git: repo=https://github.com/styxit/HTPC-Manager.git dest={{htpcmanager.home}}
+
+- name: Add Runscripts For SickRage
+  sudo: yes
+  command: cp /home/{{server.download_user}}/.htpc-manager/initd /etc/init.d/htpc-manager
+
+- name: Configure Runscript
+  sudo: yes
+  replace: dest=/etc/init.d/htpc-manager regexp='RUN_AS=root' replace='RUN_AS={{htpcmanager.user}}' backup=no
+
+- name: Prepare Runscript Configuration
+  sudo: yes
+  replace: dest=/etc/init.d/htpc-manager regexp='APP_PATH=/path/to/htpc-manager' replace='APP_PATH={{htpcmanager.home}}' backup=no
+
+- name: Prepare Runscript Configuration
+  sudo: yes
+  replace: dest=/etc/init.d/htpc-manager regexp='PID_FILE=/var/run/htpcmanager.pid' replace='PID_FILE={{htpcmanager.home}}/htpcmanager.pid' backup=no
+
+- name: Add Execute Permissions To Runscript
+  sudo: yes
+  file: path=/etc/init.d/htpc-manager state=file mode="755"
+
+- name: Update Boot Sequence To Recognize HTPC-Manager
+  sudo: yes
+  command: update-rc.d htpc-manager defaults
+  notify:
+      - restart htpc-manager
+
+- name: Change htpc-manager ownership
+  sudo: yes
+  file: path={{htpcmanager.home}} owner={{server.download_user}} group={{server.download_user}} recurse=yes

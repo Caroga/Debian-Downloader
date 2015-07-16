@@ -8,7 +8,7 @@ Using Ansible, this set of roles will install the following software:
  - [CouchPotato](https://couchpota.to/)
  - [Deluge](http://deluge-torrent.org/)
  - [NZBget](http://nzbget.net/)
- - [Headphones](https://github.com/rembo10/headphones)
+ - [Headphones](http://htpc.io/)
 
 Future additions
 ----------------
@@ -17,7 +17,7 @@ I am planning to add the following software/configurations:
  - Nginx, to enable a reverse proxy to resolve something like "http://downloader.vm/couchpotato"
  - ~~SABnzbd or NZBGet, usenet downloader~~
  - ~~HeadPhones, Automatic music downloader for SABnzbd~~
- - HTPC-Manager, as I like to actually have 1 interface to rule them all!
+ - ~~HTPC-Manager, as I like to actually have 1 interface to rule them all!~~
  - Tie them all together, sharing a preselected media location to create a NFS share and automatically add it into CouchPotato and SickRage if possible.
  - Kick back, and watch stuff happen.
 
@@ -45,6 +45,7 @@ If you did a `vagrant up` with this project's Vagrantfile, you can just press on
  - [Deluge](http://192.168.31.100:8112) OR http://-machineip-:8112
  - [NZBget](http://192.168.31.100:6789) OR http://-machineip-:6789
  - [Headphones](http://192.168.31.100:8181) OR http://-machineip-:8181
+ - [HTPC-Manager](http://192.168.31.100:8085) OR http://-machineip-:8085
 
 Known issues
 -------

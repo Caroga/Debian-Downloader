@@ -1,0 +1,3 @@
+---
+- name: restart htpc-manager
+  service: name=htpc-manager state=restarted
