@@ -1,13 +1,11 @@
 ---
-
-
 - name: HeadPhones Git Repository Checkout
   sudo: yes
-  git: repo=https://github.com/rembo10/headphones.git dest=/home/{{server.download_user}}/.headphones
+  git: repo=https://github.com/rembo10/headphones.git dest={{headphones.home}}
 
 - name: Add Runscripts For HeadPhones
   sudo: yes
-  command: cp /home/{{server.download_user}}/.headphones/init-scripts/init.ubuntu /etc/init.d/headphones
+  command: cp {{headphones.home}}/init-scripts/init.ubuntu /etc/init.d/headphones
 
 - name: Add Execute Permissions To Runscript
   sudo: yes
@@ -41,4 +39,4 @@
 
 - name: Change HeadPhones ownership
   sudo: yes
-  file: path=/home/{{server.download_user}}/.headphones owner={{server.download_user}} group={{server.download_user}} recurse=yes
+  file: path={{headphones.home}} owner={{server.download_user}} group={{server.download_user}} recurse=yes
