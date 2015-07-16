@@ -8,11 +8,11 @@
 
 - name: CouchPotato Git Repository Checkout
   sudo: yes
-  git: repo=git://github.com/RuudBurger/CouchPotatoServer.git dest=/home/{{server.download_user}}/.couchpotato accept_hostkey=yes
+  git: repo=git://github.com/RuudBurger/CouchPotatoServer.git dest={{couchpotato.home}} accept_hostkey=yes
 
 - name: Add Runscripts For CouchPotato
   sudo: yes
-  command: cp /home/{{server.download_user}}/.couchpotato/init/ubuntu /etc/init.d/couchpotato
+  command: cp {{couchpotato.home}}/init/ubuntu /etc/init.d/couchpotato
 
 - name: Add Execute Permissions To Runscript
   sudo: yes
@@ -34,4 +34,4 @@
 
 - name: Change couchpotato ownership
   sudo: yes
-  file: path=/home/{{server.download_user}}/.couchpotato owner={{server.download_user}} group={{server.download_user}} recurse=yes
+  file: path={{couchpotato.home}} owner={{server.download_user}} group={{server.download_user}} recurse=yes
