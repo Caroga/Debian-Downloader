@@ -17,19 +17,13 @@
     - libfreetype6-dev
     - zlib1g-dev
 
-- name: Remove Faulty Python OpenSSL Library
-  sudo: yes
-  shell: sudo pip install pip -U
-
-
-- name: Remove Faulty Python OpenSSL Library
-  sudo: yes
-  shell: sudo pip uninstall pyopenssl -y
-
-
 - name: HTPC-Manager Git Repository Checkout
   sudo: yes
   git: repo=https://github.com/styxit/HTPC-Manager.git dest={{htpcmanager.home}}
+
+- name: Remove Faulty Python OpenSSL Library Configuration
+  sudo: yes
+  replace: dest="{{htpcmanager.home}}/libs/requests/packages/urllib3/contrib/pyopenssl.py" regexp="ssl.PROTOCOL_SSLv3\:\ OpenSSL.SSL.SSLv3_METHOD," replace=' ' backup=no
 
 - name: Add Runscripts For SickRage
   sudo: yes
