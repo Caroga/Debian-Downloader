@@ -8,7 +8,8 @@ Using Ansible, this set of roles will install the following software:
  - [CouchPotato](https://couchpota.to/)
  - [Deluge](http://deluge-torrent.org/)
  - [NZBget](http://nzbget.net/)
- - [Headphones](http://htpc.io/)
+ - [Headphones](https://github.com/rembo10/headphones)
+ - [HTPC-Manager](http://htpc.io/)
 
 Future additions
 ----------------
