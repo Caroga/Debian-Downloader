@@ -20,6 +20,7 @@ delugewebui:
     group: "{{server.download_user}}"
     logfile_location: "/var/log/deluge-web.log"
 nzbget:
+  home: "/home/{{server.download_user}}/.nzbget"
   user: "{{server.download_user}}"
   download_dir: "/home/{{server.download_user}}/downloads"
 headphones:

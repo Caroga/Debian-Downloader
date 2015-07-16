@@ -33,7 +33,7 @@
 
 - name: Add Runscripts For SickRage
   sudo: yes
-  command: cp /home/{{server.download_user}}/.htpc-manager/initd /etc/init.d/htpc-manager
+  command: cp {{htpcmanager.home}}/initd /etc/init.d/htpc-manager
 
 - name: Configure Runscript
   sudo: yes

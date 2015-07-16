@@ -9,15 +9,15 @@
 
 - name: SickRage Git Repository Checkout
   sudo: yes
-  git: repo=https://github.com/SiCKRAGETV/SickRage.git dest=/home/{{server.download_user}}/.sickrage
+  git: repo=https://github.com/SiCKRAGETV/SickRage.git dest={{sickrage.home}}
 
 - name: Initiate autoProcessTV CFG
   sudo: yes
-  command: cp -a /home/{{server.download_user}}/.sickrage/autoProcessTV/autoProcessTV.cfg.sample /home/{{server.download_user}}/.sickrage/autoProcessTV/autoProcessTV.cfg
+  command: cp -a {{sickrage.home}}/autoProcessTV/autoProcessTV.cfg.sample {{sickrage.home}}/autoProcessTV/autoProcessTV.cfg
 
 - name: Add Runscripts For SickRage
   sudo: yes
-  command: cp /home/{{server.download_user}}/.sickrage/runscripts/init.debian /etc/init.d/sickrage
+  command: cp {{sickrage.home}}/runscripts/init.debian /etc/init.d/sickrage
 
 - name: Add Execute Permissions To Runscript
   sudo: yes
@@ -39,4 +39,4 @@
 
 - name: Change SickRage ownership
   sudo: yes
-  file: path=/home/{{server.download_user}}/.sickrage owner={{server.download_user}} group={{server.download_user}} recurse=yes
+  file: path={{sickrage.home}} owner={{server.download_user}} group={{server.download_user}} recurse=yes

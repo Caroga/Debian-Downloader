@@ -8,11 +8,11 @@
 
 - name: Create Default Settings
   sudo: yes
-  template: src=default.settings.nzbget.tpl dest=/home/{{server.download_user}}/.nzbget
+  template: src=default.settings.nzbget.tpl dest={{nzbget.home}}
 
 - name: Change Ownership Of NZBget Configuration File
   sudo: yes
-  file: path=/home/{{server.download_user}}/.nzbget owner={{server.download_user}} group={{server.download_user}}
+  file: path={{nzbget.home}} owner={{server.download_user}} group={{server.download_user}}
 
 - name: Add Runscripts For NZBget
   sudo: yes
