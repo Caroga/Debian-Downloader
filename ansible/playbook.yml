@@ -5,9 +5,9 @@
     - vars/all.yml
   roles:
     - server
-    - sickrage
     - couchpotato
     - deluge
-    - nzbget
     - headphones
-    - htpc-manager
+#    - htpc-manager
+    - nzbget
+    - sickrage

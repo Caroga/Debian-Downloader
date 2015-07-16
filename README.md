@@ -9,7 +9,7 @@ Using Ansible, this set of roles will install the following software:
  - [Deluge](http://deluge-torrent.org/)
  - [NZBget](http://nzbget.net/)
  - [Headphones](https://github.com/rembo10/headphones)
- - [HTPC-Manager](http://htpc.io/)
+ - ~~[HTPC-Manager](http://htpc.io/)~~ Currently de-activated as this breaks the Deluge installation
 
 Future additions
 ----------------
@@ -46,7 +46,7 @@ If you did a `vagrant up` with this project's Vagrantfile, you can just press on
  - [Deluge](http://192.168.31.100:8112) OR http://-machineip-:8112
  - [NZBget](http://192.168.31.100:6789) OR http://-machineip-:6789
  - [Headphones](http://192.168.31.100:8181) OR http://-machineip-:8181
- - [HTPC-Manager](http://192.168.31.100:8085) OR http://-machineip-:8085
+ - ~~[HTPC-Manager](http://192.168.31.100:8085) OR http://-machineip-:8085~~ Currently de-activated as this breaks the Deluge installation
 
 Known issues
 -------
